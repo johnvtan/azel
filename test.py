@@ -9,10 +9,10 @@ if __name__ == '__main__':
 	if len(sys.argv) != 5:
 		print('test.py <up_pin_num> <down_pin_num> <left_pin_num> <right_pin_num>')
 		sys.exit(1)
-	up_pin_num = sys.argv[1]
-	down_pin_num = sys.argv[2]
-	left_pin_num = sys.argv[3]
-	right_pin_num = sys.argv[4]
+	up_pin_num = int(sys.argv[1])
+	down_pin_num = int(sys.argv[2])
+	left_pin_num = int(sys.argv[3])
+	right_pin_num = int(sys.argv[4])
 
 	up = LED(up_pin_num)
 	down = LED(down_pin_num)
@@ -31,22 +31,22 @@ if __name__ == '__main__':
 			if char == ord('q'):
 				break
 			elif char == curses.KEY_RIGHT and prev != right:
-				prev.off()
+				if prev: prev.off()
 				right.on()
 				prev = right
 				print('right\r')
 			elif char == curses.KEY_LEFT and prev != left:
-				prev.off()
+				if prev: prev.off()
 				left.on()
 				prev = left
 				print('left\r')
 			elif char == curses.KEY_UP and prev != up:
-				prev.off()
+				if prev: prev.off()
 				up.on()
 				prev = up
 				print('up\r')
 			elif char == curses.KEY_DOWN and prev != down:
-				prev.off()
+				if prev: prev.off()
 				down.on()
 				prev = down
 				print('down\r')
